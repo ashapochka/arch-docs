@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+wheels/
+
+# Environments
+.venv/
+.env
+.env.*
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Generated output (previews, scratch renders)
+*.png
+*.pdf
+out/
+
+# Editors / OS
+.idea/
+.vscode/
+.zed/
+*.swp
+.DS_Store
+Thumbs.db

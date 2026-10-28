@@ -1,0 +1,57 @@
+[project]
+name = "arch-docs"
+version = "0.1.0"
+description = "Architecture docs toolkit: editable .drawio.svg diagrams from Python and Markdown-to-PDF rendering."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "ashapochka", email = "535904+ashapochka@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "cairosvg>=2.9.1",
+    "markdown-it-py>=4.2.0",
+    "weasyprint>=70.0",
+]
+
+[project.scripts]
+arch-docs = "arch_docs.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.40.2",
+    "pypdf>=6.21.3",
+    "pytest>=9.2.0",
+    "ruff>=0.17.3,<0.18",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["slow: renders through WeasyPrint/cairo (deselect with -m 'not slow')"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.basedpyright]
+typeCheckingMode = "recommended"
+include = ["src", "tests", "examples"]
+reportAny = false
+reportExplicitAny = false
+reportImplicitStringConcatenation = false
+reportUnusedCallResult = false
+[[tool.basedpyright.executionEnvironments]]
+root = "tests"
+extraPaths = ["tests"]
+reportUnknownMemberType = false
+reportUnknownParameterType = false
+reportUnknownVariableType = false
+reportUnknownArgumentType = false
+reportMissingParameterType = false
+reportUnknownLambdaType = false
+reportPrivateUsage = false
