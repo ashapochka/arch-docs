@@ -76,6 +76,10 @@ Kinds (colours): `ui` blue, `app` green, `int` yellow (integration), `srv` orang
   Without it, text is wider and can overflow boxes: use `--font-dir`.
 - WeasyPrint needs Pango; on Debian/Ubuntu, `apt install libpango-1.0-0 libpangoft2-1.0-0`.
 
+## Full architecture analysis
+
+For a complete analysis report (drivers, views, decisions, ATAM risks and tradeoffs), delegate to the `architecture-writer` subagent (`agents/architecture-writer.md`). It follows this skill's workflow.
+
 ## Improving the toolkit
 
 It is a TDD project. Follow `$AD/CLAUDE.md`, and record decisions in

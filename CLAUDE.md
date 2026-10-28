@@ -26,6 +26,7 @@ The tree is lint-clean and type-clean: run all three before committing.
   - `adapters.py`: files, font discovery, WeasyPrint, CairoSVG.
   - `cli.py`: argparse wiring only.
 - Core modules never import `adapters`, `cli`, `weasyprint` or `cairosvg`, and never touch files; `adapters` never imports `cli`. `tests/test_architecture.py` enforces this (D-003).
+- `agents/architecture-writer.md`: the subagent that writes architecture analysis reports with this toolkit. It's symlinked into `~/.claude/agents/`. Keep its commands and workflow in sync with `SKILL.md` and the CLI.
 - `examples/`: worked diagram sets. Each has `build() -> list[Diagram]`, validated by `tests/test_examples.py`.
 - `docs/decisions.md`: the decision log.
 

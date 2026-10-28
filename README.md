@@ -56,6 +56,21 @@ save_diagram(d, Path("docs/diagrams"))
 runtime view, use cases, logical structure (UML classes), module dependencies,
 contracts, three sequence diagrams and an activity diagram.
 
+## Subagent: architecture-writer
+
+[agents/architecture-writer.md](agents/architecture-writer.md) is a Claude Code subagent. It recovers a solution's architecture from code and docs and writes an evidence-based analysis report: Markdown with these diagrams, rendered to PDF. The report is structured by Views and Beyond (views), ADD (drivers and significant requirements) and ATAM (sensitivity points, tradeoffs, risks). It preloads the `arch-docs`, `doc-coauthoring` and `pdf` skills.
+
+Install it, and the two Anthropic skills it uses, at user level:
+
+```bash
+mkdir -p ~/.claude/agents
+ln -s ~/.claude/skills/arch-docs/agents/architecture-writer.md ~/.claude/agents/
+# pdf and doc-coauthoring come from https://github.com/anthropics/skills
+# (install the plugins, or copy skills/pdf and skills/doc-coauthoring into ~/.claude/skills)
+```
+
+Then ask Claude Code: *"use the architecture-writer agent to analyze this project"*. It writes `docs/architecture-analysis.md`, the matching `.pdf` and `docs/diagrams/aa-*.drawio.svg`. It never overwrites an existing architecture doc and doesn't commit.
+
 ## Develop
 
 ```bash

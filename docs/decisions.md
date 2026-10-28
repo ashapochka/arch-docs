@@ -64,3 +64,10 @@ Newest last. Format and rules: see CLAUDE.md.
 **Decision:** The diagram builder came from working project code. It was ported with behaviour-pinning tests plus a pixel comparison of the regenerated example diagrams, not rewritten test-first. New behaviour follows stub → test → implementation.
 
 **Why:** The existing output was already verified visually. Pinning it guards the port, and strict TDD applies to every change from here on.
+
+## D-010 The architecture-writer subagent ships in this repo
+*2026-10-28 · accepted*
+
+**Decision:** `agents/architecture-writer.md` lives here and is symlinked into `~/.claude/agents/`. It preloads `arch-docs`, `doc-coauthoring` and `pdf`, structures reports by Views and Beyond, ADD and ATAM, and may use the `Agent` tool only for doc-coauthoring's fresh-reader test. The Anthropic skills are prerequisites, not vendored copies.
+
+**Why:** The agent depends on this toolkit's commands, so it is versioned with them. The `pdf` skill has a proprietary licence and cannot be redistributed in a public MIT repo.
